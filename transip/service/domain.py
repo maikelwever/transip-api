@@ -51,3 +51,8 @@ class DomainService(Client):
         self.update_cookie(cookie)
 
         return self.soap_client.service.setDnsEntries(domain_name, dns_entries)
+
+    def batch_check_availability(self, domain_names):
+        cookie = self.build_cookie(mode=MODE_RO, method='batchCheckAvailability', parameters=[domain_names])
+        self.update_cookie(cookie)
+        return self.soap_client.service.batchCheckAvailability(domain_names)

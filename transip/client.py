@@ -78,8 +78,11 @@ class Client(object):
                     if isinstance(entryvalue, SudsObject):
                         for objectkey, objectvalue in entryvalue:
                             sign[str(index)+'['+str(entryindex)+']['+objectkey+']'] = objectvalue
+                    else:
+                        sign[str(index)+'['+str(entryindex)+']'] = entryvalue
             else:
                 sign[index] = value
+
         sign['__method'] = method_name
         sign['__service'] = service_name
         sign['__hostname'] = self.endpoint
